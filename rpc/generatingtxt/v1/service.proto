@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package rpc.generatingtxt.v1;
+
+option go_package = "github.com/BinaryLogos/schema/rpc/generatingtxt/v1";
+
+service GeneratingTxtService {
+    rpc GenerateArticle(GenerateArticleRequest) returns (GenerateArticleResponse);
+}
+
+message GenerateArticleRequest {
+    TextLanguage language = 1;
+    TextType type = 2;
+
+}
+
+message GenerateArticleResponse {
+    string summary = 1;
+    repeated string paragraphs = 2;
+}
+
+enum TextType {
+    TYPE_UNSPECIFIED = 0;
+    ARTICLE = 1;
+}
+
+enum TextLanguage {
+    LANGUAGE_UNSPECIFIED = 0;
+    ENGLISH = 1;
+    GREEK = 2;
+}
+
+enum TextCategory {
+    CATEGORY_UNSPECIFIED = 0;
+    FOOTBALL = 1;
+    UFC = 2;
+    NBA = 3;
+    ESPORTS = 4;
+}
+
+enum TextSubCategory {
+    SUBCATEGORY_UNSPECIFIED = 0;
+    FIXTURE = 1;
+    RESULT = 2;
+    HISTORICAL = 3;
+    REVIEW = 4;
+
+}
